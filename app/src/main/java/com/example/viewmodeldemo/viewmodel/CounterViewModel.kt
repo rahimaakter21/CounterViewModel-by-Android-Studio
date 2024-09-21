@@ -1,11 +1,19 @@
 package com.example.viewmodeldemo.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel:ViewModel() {
-    var counter:Int=0
+
+   private  val _count = MutableLiveData<Int>()
+    val count: LiveData<Int> = _count
+            init{
+
+                _count.value = 0
+            }
     fun incrementCounter(){
-        counter++
+       _count.value=_count.value?.plus(1)
     }
 
 }
